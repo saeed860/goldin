@@ -42,6 +42,7 @@
             font-family: 'Vazirmatn', sans-serif;
             background-color: #0A0E17;
             color: #E2E8F0;
+            user-select: none;
         }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #AA820A 100%);
@@ -59,10 +60,25 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        #gameCanvas {
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            border-radius: 1rem;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        .coin-btn {
+            background: radial-gradient(circle at 30% 30%, #FFE033 0%, #D4AF37 60%, #856508 100%);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), inset 0 2px 5px rgba(255,255,255,0.6), inset 0 -4px 6px rgba(0,0,0,0.4);
+            transition: transform 0.05s ease;
+        }
+        .coin-btn:active {
+            transform: scale(0.93);
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-80px) scale(1.3); }
+        }
+        .floating-number {
+            position: absolute;
+            animation: floatUp 0.8s ease-out forwards;
+            pointer-events: none;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
     </style>
 </head>
@@ -85,7 +101,7 @@
                     <a href="#trade" class="hover:text-gold transition-colors">معامله آنلاین</a>
                     <a href="#game" class="hover:text-gold transition-colors flex items-center gap-1.5 text-gold">
                         <i class="fa-solid fa-gamepad text-xs"></i>
-                        استخراج طلا (بازی)
+                        استخراج طلا (معدن تتلا)
                     </a>
                     <a href="#market" class="hover:text-gold transition-colors">بازارها</a>
                     <a href="#wallet" class="hover:text-gold transition-colors">کیف پول</a>
@@ -94,9 +110,6 @@
 
             <!-- Header Actions -->
             <div class="flex items-center gap-3">
-                <button onclick="openPriceModal()" class="px-3 py-2 text-xs md:text-sm bg-dark-card border border-gold/30 rounded-lg text-slate-300 hover:border-gold hover:text-gold transition-all">
-                    <i class="fa-solid fa-sliders text-gold ml-1"></i> تنظیم قیمت‌ها
-                </button>
                 <button onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-gold transition-colors">
                     ورود
                 </button>
@@ -113,18 +126,19 @@
             <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-1">
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">طلای ۱۸ عیار (گرم):</span>
-                    <span id="goldPriceText" class="text-gold font-bold">۲۵,۷۶۰,۰۰۰ تومان</span>
-                    <span class="text-emerald-400 text-xs">(به‌روز) <i class="fa-solid fa-circle-dot animate-pulse"></i></span>
+                    <span id="goldPriceText" class="text-gold font-bold">۴,۳۵۰,۰۰۰ تومان</span>
+                    <span class="text-emerald-400 text-xs">(+۱.۲٪) <i class="fa-solid fa-arrow-up"></i></span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">تتر (USDT):</span>
-                    <span id="usdtPriceText" class="text-slate-100 font-bold">۲۶۱,۵۰۰ تومان</span>
+                    <span id="usdtPriceText" class="text-slate-100 font-bold">۶۸,۵۰۰ تومان</span>
+                    <span class="text-emerald-400 text-xs">(+۰.۴٪) <i class="fa-solid fa-arrow-up"></i></span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">انس جهانی طلا:</span>
-                    <span id="globalGoldText" class="text-slate-100 font-bold">$۴,۰۵۰.۰۰</span>
+                    <span class="text-slate-100 font-bold">$۲,۶۸۵.۵۰</span>
                 </div>
             </div>
         </div>
@@ -143,7 +157,105 @@
                     معامله لحظه‌ای <span class="gold-gradient-text">طلای آبشده</span> با تتر و تومان
                 </h1>
                 <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
-                    در گلدین می‌توانید دارایی خود را به صورت ۲۴ ساعته و بدون حباب تبدیل به طلای خالص ۱۸ عیار کرده یا از طریق بازی استخراج، طلای رایگان پاداش بگیرید.
+                    در گلدین می‌توانید دارایی خود را به صورت ۲۴ ساعته و بدون حباب تبدیل به طلای خالص ۱۸ عیار کرده یا از طریق مینی‌اپ استخراج، سکه طلا پاداش بگیرید.
                 </p>
                 <div class="flex flex-wrap gap-4 pt-2">
-                    <button onclick="openAuthModal('register')" class="px-8
+                    <button onclick="openAuthModal('register')" class="px-8 py-3.5 text-base font-bold text-black gold-btn-gradient rounded-xl shadow-lg shadow-gold/20 hover:scale-105 transition-all">
+                        شروع معامله طلا
+                    </button>
+                    <a href="#game" class="px-8 py-3.5 text-base font-bold text-slate-200 bg-dark-card border border-dark-border rounded-xl hover:border-gold hover:text-gold transition-all">
+                        <i class="fa-solid fa-gamepad text-gold ml-2"></i>معدن استخراج طلا
+                    </a>
+                </div>
+            </div>
+
+            <!-- Converter Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel p-6 rounded-2xl space-y-5 shadow-2xl">
+                    <div class="flex justify-between items-center border-b border-dark-border pb-4">
+                        <h3 class="font-bold text-lg text-slate-100">محاسبه‌گر و معامله آنی</h3>
+                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">به‌روزرسانی زنده</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1.5">وزن طلا (گرم ۱۸ عیار):</label>
+                            <div class="relative">
+                                <input type="number" id="goldInput" value="1" oninput="calculateTrade()" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-slate-100 font-bold focus:outline-none focus:border-gold transition-colors">
+                                <span class="absolute left-4 top-3 text-sm text-slate-400">گرم</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-dark-bg p-3 rounded-xl border border-dark-border">
+                                <span class="text-xs text-slate-400 block mb-1">ارزش به تومان:</span>
+                                <span id="tomanOutput" class="text-gold font-extrabold text-sm sm:text-base">۴,۳۵۰,۰۰۰</span>
+                                <span class="text-xs text-slate-500">تومان</span>
+                            </div>
+                            <div class="bg-dark-bg p-3 rounded-xl border border-dark-border">
+                                <span class="text-xs text-slate-400 block mb-1">ارزش به تتر (USDT):</span>
+                                <span id="usdtOutput" class="text-emerald-400 font-extrabold text-sm sm:text-base">۶۳.۵</span>
+                                <span class="text-xs text-slate-500">USDT</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openAuthModal('register')" class="w-full py-3.5 text-sm font-bold text-black gold-btn-gradient rounded-xl shadow-md hover:shadow-gold/20 transition-all">
+                            خرید آنلاین طلا
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TETALLA STYLE TAP-TO-EARN GOLD MINER GAME SECTION -->
+        <section id="game" class="glass-panel p-6 sm:p-10 rounded-3xl border border-gold/30 max-w-3xl mx-auto w-full text-center">
+            <div class="space-y-2 mb-8">
+                <span class="px-3 py-1 bg-gold/10 text-gold text-xs rounded-full border border-gold/30 font-bold">مینی‌اپ استخراج طلا (سبک تتلا)</span>
+                <h2 class="text-2xl sm:text-4xl font-black gold-gradient-text">معدن طلای گلدین</h2>
+                <p class="text-xs sm:text-sm text-slate-400">روی شمش طلا ضربه بزنید تا سوت طلا استخراج کنید و به کیف پولتان اضافه کنید!</p>
+            </div>
+
+            <!-- Score / Balance Display -->
+            <div class="flex justify-center items-center gap-8 mb-8 bg-dark-bg/80 py-4 px-6 rounded-2xl border border-dark-border max-w-md mx-auto">
+                <div>
+                    <span class="text-xs text-slate-400 block mb-1">موجودی استخراج (سوت):</span>
+                    <span id="miningScore" class="text-3xl font-black text-gold">0.00</span>
+                </div>
+                <div class="h-8 w-[1px] bg-dark-border"></div>
+                <div>
+                    <span class="text-xs text-slate-400 block mb-1">انرژی باقی‌مانده:</span>
+                    <span id="energyText" class="text-xl font-bold text-emerald-400">1000 / 1000</span>
+                </div>
+            </div>
+
+            <!-- Interactive Mining Coin Area -->
+            <div class="relative flex justify-center items-center py-10" id="clickArea" onclick="mineGold(event)">
+                <!-- Glowing background ring -->
+                <div class="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gold/10 blur-2xl animate-pulse pointer-events-none"></div>
+                
+                <!-- Main Gold Ingot / Coin Button -->
+                <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-full coin-btn flex flex-col items-center justify-center cursor-pointer relative shadow-2xl group">
+                    <i class="fa-solid fa-coins text-6xl sm:text-7xl text-amber-950 drop-shadow-md group-hover:scale-110 transition-transform"></i>
+                    <span class="mt-2 font-black text-amber-950 text-sm sm:text-base tracking-wider">ضربه بزنید</span>
+                </div>
+            </div>
+
+            <!-- Energy Bar -->
+            <div class="max-w-md mx-auto w-full bg-dark-bg rounded-full h-3 p-0.5 border border-dark-border mt-4">
+                <div id="energyBar" class="bg-gradient-to-r from-amber-500 to-gold h-full rounded-full transition-all duration-200" style="width: 100%;"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-dark-border py-8 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <p>تمام حقوق معنوی این پلتفرم متعلق به سامانه هوشمند «گلدین» می‌باشد.</p>
+            <p class="text-slate-600">پلتفرم امن معاملات طلا و رمزارز - پشتیبانی ۲۴ ساعته</p>
+        </div>
+    </footer>
+
+    <!-- AUTH MODAL (Login/Register) -->
+    <div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-panel w-full max-w-md rounded-2xl p-6 relative border border-gold/30">
