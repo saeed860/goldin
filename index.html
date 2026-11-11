@@ -95,7 +95,7 @@
             <!-- Header Actions -->
             <div class="flex items-center gap-3">
                 <button onclick="openPriceModal()" class="px-3 py-2 text-xs md:text-sm bg-dark-card border border-gold/30 rounded-lg text-slate-300 hover:border-gold hover:text-gold transition-all">
-                    <i class="fa-solid fa-sliders text-gold ml-1"></i> تنظیم دستی قیمت‌ها
+                    <i class="fa-solid fa-sliders text-gold ml-1"></i> تنظیم نرخ تتر
                 </button>
                 <button onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-gold transition-colors">
                     ورود
@@ -113,13 +113,13 @@
             <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-1">
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">طلای ۱۸ عیار (گرم):</span>
-                    <span id="goldPriceText" class="text-gold font-bold">در حال دریافت...</span>
-                    <span class="text-emerald-400 text-xs">(آنلاین) <i class="fa-solid fa-circle-dot animate-pulse"></i></span>
+                    <span id="goldPriceText" class="text-gold font-bold">در حال محاسبه...</span>
+                    <span class="text-emerald-400 text-xs">(فرمول دقیق) <i class="fa-solid fa-circle-dot animate-pulse"></i></span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">تتر (USDT):</span>
-                    <span id="usdtPriceText" class="text-slate-100 font-bold">۶۸,۵۰۰ تومان</span>
+                    <span id="usdtPriceText" class="text-slate-100 font-bold">۲۶۱,۰۰۰ تومان</span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
@@ -137,7 +137,7 @@
         <section id="trade" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold">
-                    <i class="fa-solid fa-shield-halved"></i> محاسبه استاندارد متصل به سورس جهانی طلا و ارز
+                    <i class="fa-solid fa-shield-halved"></i> فرمول استاندارد طلا (انس جهانی × تتر ÷ ۳۱.۱۰۳۵ × ۰.۷۵)
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-black leading-tight">
                     معامله لحظه‌ای <span class="gold-gradient-text">طلای آبشده</span> با تتر و تومان
@@ -160,7 +160,7 @@
                 <div class="glass-panel p-6 rounded-2xl space-y-5 shadow-2xl">
                     <div class="flex justify-between items-center border-b border-dark-border pb-4">
                         <h3 class="font-bold text-lg text-slate-100">محاسبه‌گر و معامله آنی</h3>
-                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">سورس زنده</span>
+                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">فرمول دقیق</span>
                     </div>
 
                     <div class="space-y-4">
@@ -242,7 +242,7 @@
     <footer class="bg-dark-card border-t border-dark-border py-8 mt-12 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 space-y-4">
             <p>تمام حقوق معنوی این پلتفرم متعلق به سامانه هوشمند «گلدین» می‌باشد.</p>
-            <p class="text-slate-600">منبع داده‌ها: سورس جهانی انس طلا (CoinGecko API) و نرخ آزاد تتر</p>
+            <p class="text-slate-600">منبع داده‌ها: انس جهانی طلا (CoinGecko API) و نرخ آزاد تتر در بازار ایران</p>
         </div>
     </footer>
 
@@ -293,15 +293,15 @@
             <button onclick="closePriceModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            <h3 class="text-xl font-bold gold-gradient-text mb-4 text-center">تنظیم دستی نرخ‌ها</h3>
+            <h3 class="text-xl font-bold gold-gradient-text mb-4 text-center">تنظیم نرخ تتر در بازار</h3>
             
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs text-slate-400 mb-1">قیمت تتر (تومان):</label>
-                    <input type="number" id="customUsdtPrice" value="68500" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2 text-sm text-slate-100 focus:border-gold outline-none">
+                    <input type="number" id="customUsdtPrice" value="261000" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2 text-sm text-slate-100 focus:border-gold outline-none">
                 </div>
                 <button onclick="updateManualPrices()" class="w-full py-2.5 text-sm font-bold text-black gold-btn-gradient rounded-xl">
-                    اعمال و به‌روزرسانی فرمول
+                    اعمال و به‌روزرسانی فرمول طلا
                 </button>
             </div>
         </div>
@@ -309,8 +309,8 @@
 
     <!-- JavaScript Live API & Core Functions -->
     <script>
-        let globalGoldOunceUSD = 2685.50; // مقدار پیش‌فرض اولیه
-        let usdtPriceToman = 68500;
+        let globalGoldOunceUSD = 4048.00; // مقدار استاندارد انس جهانی
+        let usdtPriceToman = 261000;      // نرخ به‌روز تتر در بازار ایران
         let goldPriceGram = 0;
         let authMode = 'login';
 
@@ -329,8 +329,8 @@
         }
 
         function updatePricesCalculation() {
-            // formula: (Ounce USD * USDT Toman / 31.1034768) * 0.75 (for 18k gold)
-            const gram24k = globalGoldOunceUSD * usdtPriceToman / 31.1034768;
+            // فرمول استاندارد طلا: (انس جهانی * نرخ تتر) / 31.1035 * 0.75 (عیار 18)
+            const gram24k = (globalGoldOunceUSD * usdtPriceToman) / 31.1035;
             goldPriceGram = Math.round(gram24k * 0.75);
 
             // Update UI Ticker
@@ -511,41 +511,3 @@
                 ctx.lineWidth = 1;
                 ctx.stroke();
             });
-
-            const endX = 300 + Math.sin(hook.angle) * hook.length;
-            const endY = 50 + Math.cos(hook.angle) * hook.length;
-
-            ctx.beginPath();
-            ctx.moveTo(300, 20);
-            ctx.lineTo(endX, endY);
-            ctx.strokeStyle = '#D4AF37';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-
-            if (hook.caughtItem) {
-                hook.caughtItem.x = endX;
-                hook.caughtItem.y = endY + hook.caughtItem.radius;
-                ctx.beginPath();
-                ctx.arc(hook.caughtItem.x, hook.caughtItem.y, hook.caughtItem.radius, 0, Math.PI * 2);
-                ctx.fillStyle = hook.caughtItem.color;
-                ctx.fill();
-            }
-
-            ctx.save();
-            ctx.translate(endX, endY);
-            ctx.rotate(-hook.angle);
-            ctx.beginPath();
-            ctx.arc(0, 0, 8, 0, Math.PI);
-            ctx.strokeStyle = '#FFD700';
-            ctx.lineWidth = 4;
-            ctx.stroke();
-            ctx.restore();
-
-            requestAnimationFrame(gameLoop);
-        }
-
-        // Initialize Live Data on Load
-        fetchLiveMarketData();
-    </script>
-</body>
-</html>
