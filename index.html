@@ -108,8 +108,8 @@
                 </nav>
             </div>
 
-            <!-- Header Actions -->
-            <div class="flex items-center gap-3">
+            <!-- Header Actions / Profile -->
+            <div class="flex items-center gap-3" id="headerAuthArea">
                 <button onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-gold transition-colors">
                     ورود
                 </button>
@@ -124,4 +124,76 @@
     <section class="bg-dark-card border-b border-dark-border py-2.5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between text-xs sm:text-sm font-semibold">
             <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-1">
-                <div class
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                    <span class="text-slate-400">طلای ۱۸ عیار (گرم):</span>
+                    <span id="goldPriceText" class="text-gold font-bold">۴,۳۵۰,۰۰۰ تومان</span>
+                    <span class="text-emerald-400 text-xs">(+۱.۲٪) <i class="fa-solid fa-arrow-up"></i></span>
+                </div>
+                <div class="h-4 w-[1px] bg-dark-border"></div>
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                    <span class="text-slate-400">تتر (USDT):</span>
+                    <span id="usdtPriceText" class="text-slate-100 font-bold">۶۸,۵۰۰ تومان</span>
+                    <span class="text-emerald-400 text-xs">(+۰.۴٪) <i class="fa-solid fa-arrow-up"></i></span>
+                </div>
+                <div class="h-4 w-[1px] bg-dark-border"></div>
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                    <span class="text-slate-400">انس جهانی طلا:</span>
+                    <span class="text-slate-100 font-bold">$۲,۶۸۵.۵۰</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-16">
+
+        <!-- Hero & Quick Converter -->
+        <section id="trade" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold">
+                    <i class="fa-solid fa-shield-halved"></i> بستری امن و بدون کارمزد برای معاملات آنلاین
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-black leading-tight">
+                    معامله لحظه‌ای <span class="gold-gradient-text">طلای آبشده</span> با تتر و تومان
+                </h1>
+                <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                    در گلدین می‌توانید دارایی خود را به صورت ۲۴ ساعته و بدون حباب تبدیل به طلای خالص ۱۸ عیار کرده یا از طریق مینی‌اپ استخراج، سکه طلا پاداش بگیرید.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <button onclick="openAuthModal('register')" class="px-8 py-3.5 text-base font-bold text-black gold-btn-gradient rounded-xl shadow-lg shadow-gold/20 hover:scale-105 transition-all">
+                        شروع معامله طلا
+                    </button>
+                    <a href="#game" class="px-8 py-3.5 text-base font-bold text-slate-200 bg-dark-card border border-dark-border rounded-xl hover:border-gold hover:text-gold transition-all">
+                        <i class="fa-solid fa-gamepad text-gold ml-2"></i>معدن استخراج طلا
+                    </a>
+                </div>
+            </div>
+
+            <!-- Converter Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel p-6 rounded-2xl space-y-5 shadow-2xl">
+                    <div class="flex justify-between items-center border-b border-dark-border pb-4">
+                        <h3 class="font-bold text-lg text-slate-100">محاسبه‌گر و معامله آنی</h3>
+                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">به‌روزرسانی زنده</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1.5">وزن طلا (گرم ۱۸ عیار):</label>
+                            <div class="relative">
+                                <input type="number" id="goldInput" value="1" oninput="calculateTrade()" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-slate-100 font-bold focus:outline-none focus:border-gold transition-colors">
+                                <span class="absolute left-4 top-3 text-sm text-slate-400">گرم</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-dark-bg p-3 rounded-xl border border-dark-border">
+                                <span class="text-xs text-slate-400 block mb-1">ارزش به تومان:</span>
+                                <span id="tomanOutput" class="text-gold font-extrabold text-sm sm:text-base">۴,۳۵۰,۰۰۰</span>
+                                <span class="text-xs text-slate-500">تومان</span>
+                            </div>
+                            <div class="bg-dark-bg p-3 rounded-xl border border-dark-border">
+                                <span class="text-xs text-slate-400 block mb-1">ارزش به تتر (USDT):</span>
+                                <span id="usdtOutput" class="text-emerald-400 font-extrabold text-sm sm:text-base">۶۳.۵</span>
+                                <span class="text-xs text-slate-500">USDT</span>
+                            </div>
