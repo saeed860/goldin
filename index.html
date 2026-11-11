@@ -94,11 +94,8 @@
 
             <!-- Header Actions -->
             <div class="flex items-center gap-3">
-                <button onclick="fetchLiveMarketData()" class="px-3 py-2 text-xs md:text-sm bg-dark-card border border-gold/30 rounded-lg text-slate-300 hover:border-gold hover:text-gold transition-all">
-                    <i class="fa-solid fa-rotate text-gold ml-1"></i> بروزرسانی آنلاین
-                </button>
-                <button onclick="openPriceModal()" class="px-3 py-2 text-xs md:text-sm bg-dark-card border border-dark-border rounded-lg text-slate-400 hover:text-white transition-all">
-                    تنظیم دستی
+                <button onclick="openPriceModal()" class="px-3 py-2 text-xs md:text-sm bg-dark-card border border-gold/30 rounded-lg text-slate-300 hover:border-gold hover:text-gold transition-all">
+                    <i class="fa-solid fa-sliders text-gold ml-1"></i> تنظیم دستی نرخ‌ها
                 </button>
                 <button onclick="openAuthModal('login')" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-gold transition-colors">
                     ورود
@@ -116,18 +113,17 @@
             <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-1">
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">طلای ۱۸ عیار (گرم):</span>
-                    <span id="goldPriceText" class="text-gold font-bold">در حال دریافت...</span>
-                    <span class="text-emerald-400 text-xs">(زنده) <i class="fa-solid fa-circle-dot animate-pulse"></i></span>
+                    <span id="goldPriceText" class="text-gold font-bold">۰ تومان</span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">تتر (USDT):</span>
-                    <span id="usdtPriceText" class="text-slate-100 font-bold">در حال دریافت...</span>
+                    <span id="usdtPriceText" class="text-slate-100 font-bold">۰ تومان</span>
                 </div>
                 <div class="h-4 w-[1px] bg-dark-border"></div>
                 <div class="flex items-center gap-2 whitespace-nowrap">
                     <span class="text-slate-400">انس جهانی طلا:</span>
-                    <span id="globalGoldText" class="text-slate-100 font-bold">در حال دریافت...</span>
+                    <span id="globalGoldText" class="text-slate-100 font-bold">$۰</span>
                 </div>
             </div>
         </div>
@@ -140,7 +136,7 @@
         <section id="trade" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold">
-                    <i class="fa-solid fa-shield-halved"></i> قیمت‌ها مستقیم از بازار تتر و انس جهانی به‌روزرسانی می‌شوند
+                    <i class="fa-solid fa-shield-halved"></i> فرمول استاندارد طلا (انس جهانی × تتر ÷ ۳۱.۱۰۳۵ × ۰.۷۵)
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-black leading-tight">
                     معامله لحظه‌ای <span class="gold-gradient-text">طلای آبشده</span> با تتر و تومان
@@ -163,7 +159,7 @@
                 <div class="glass-panel p-6 rounded-2xl space-y-5 shadow-2xl">
                     <div class="flex justify-between items-center border-b border-dark-border pb-4">
                         <h3 class="font-bold text-lg text-slate-100">محاسبه‌گر و معامله آنی</h3>
-                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">فرمول دقیق</span>
+                        <span class="text-xs text-gold bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">آنلاین</span>
                     </div>
 
                     <div class="space-y-4">
@@ -245,7 +241,7 @@
     <footer class="bg-dark-card border-t border-dark-border py-8 mt-12 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 space-y-4">
             <p>تمام حقوق معنوی این پلتفرم متعلق به سامانه هوشمند «گلدین» می‌باشد.</p>
-            <p class="text-slate-600">منبع داده‌ها: API زنده نوبیتکس (تتر به ریال) و API انس جهانی طلا</p>
+            <p class="text-slate-600">پلتفرم امن معاملات طلا و رمزارز - پشتیبانی ۲۴ ساعته</p>
         </div>
     </footer>
 
@@ -270,307 +266,4 @@
                 </div>
                 <div>
                     <label class="block text-xs text-slate-400 mb-1">شماره همراه:</label>
-                    <input type="tel" required placeholder="09123456789" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-gold dir-ltr text-right">
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">رمز عبور:</label>
-                    <input type="password" required placeholder="••••••••" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-gold">
-                </div>
-
-                <button type="submit" id="authSubmitBtn" class="w-full py-3 text-sm font-bold text-black gold-btn-gradient rounded-xl shadow-md hover:shadow-gold/20 transition-all mt-2">
-                    ورود به حساب
-                </button>
-            </form>
-
-            <div class="text-center mt-4">
-                <button onclick="toggleAuthMode()" id="toggleAuthBtn" class="text-xs text-gold hover:underline">
-                    حساب کاربری ندارید؟ ثبت نام کنید
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRICE MODAL -->
-    <div id="priceModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-panel w-full max-w-sm rounded-2xl p-6 relative border border-gold/30">
-            <button onclick="closePriceModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <h3 class="text-xl font-bold gold-gradient-text mb-4 text-center">تنظیم دستی نرخ‌ها</h3>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">قیمت تتر (تومان):</label>
-                    <input type="number" id="customUsdtPrice" value="68500" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2 text-sm text-slate-100 focus:border-gold outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-1">قیمت انس جهانی ($):</label>
-                    <input type="number" id="customOuncePrice" value="2700" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2 text-sm text-slate-100 focus:border-gold outline-none">
-                </div>
-                <button onclick="updateManualPrices()" class="w-full py-2.5 text-sm font-bold text-black gold-btn-gradient rounded-xl">
-                    اعمال و به‌روزرسانی فرمول طلا
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Live API & Core Functions -->
-    <script>
-        let globalGoldOunceUSD = 2700.00; // پیش‌فرض اولیه
-        let usdtPriceToman = 68500;       // پیش‌فرض اولیه (به تومان)
-        let goldPriceGram = 0;
-        let authMode = 'login';
-
-        // دریافت زنده اطلاعات از وب‌سرویس‌ها
-        async function fetchLiveMarketData() {
-            // ۱. دریافت قیمت زنده تتر از وب‌سرویس عمومی نوبیتکس (به ریال)
-            try {
-                const resUsdt = await fetch('https://api.nobitex.ir/market/stats?srcCurrency=usdt&dstCurrency=rls');
-                const dataUsdt = await resUsdt.json();
-                if (dataUsdt && dataUsdt.stats && dataUsdt.stats['usdt-rls']) {
-                    const priceRials = parseFloat(dataUsdt.stats['usdt-rls'].latest);
-                    if (priceRials > 0) {
-                        usdtPriceToman = Math.round(priceRials / 10); // تبدیل ریال به تومان
-                    }
-                }
-            } catch (e) {
-                console.log('استفاده از نرخ پیش‌فرض تتر به دلیل محدودیت شبکه');
-            }
-
-            // ۲. دریافت انس جهانی طلا از API CoinGecko (ارز PAXG)
-            try {
-                const resGold = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd');
-                const dataGold = await resGold.json();
-                if (dataGold && dataGold['pax-gold']) {
-                    globalGoldOunceUSD = dataGold['pax-gold'].usd;
-                }
-            } catch (e) {
-                console.log('استفاده از انس پیش‌فرض به دلیل محدودیت شبکه');
-            }
-
-            updatePricesCalculation();
-        }
-
-        function updatePricesCalculation() {
-            // فرمول استاندارد جهانی و کشوری طلای ۱۸ عیار:
-            // (قیمت انس جهانی * قیمت تتر به تومان) / 31.1034768 * 0.75
-            const gram24k = (globalGoldOunceUSD * usdtPriceToman) / 31.1034768;
-            goldPriceGram = Math.round(gram24k * 0.75);
-
-            // بروزرسانی عناصر UI
-            document.getElementById('globalGoldText').innerText = '$' + globalGoldOunceUSD.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById('usdtPriceText').innerText = usdtPriceToman.toLocaleString('fa-IR') + ' تومان';
-            document.getElementById('goldPriceText').innerText = goldPriceGram.toLocaleString('fa-IR') + ' تومان';
-
-            calculateTrade();
-        }
-
-        function calculateTrade() {
-            const grams = parseFloat(document.getElementById('goldInput').value) || 0;
-            const totalToman = grams * goldPriceGram;
-            const totalUsdt = usdtPriceToman > 0 ? (totalToman / usdtPriceToman) : 0;
-
-            document.getElementById('tomanOutput').innerText = totalToman.toLocaleString('fa-IR');
-            document.getElementById('usdtOutput').innerText = totalUsdt.toFixed(2);
-        }
-
-        function updateManualPrices() {
-            usdtPriceToman = parseFloat(document.getElementById('customUsdtPrice').value) || usdtPriceToman;
-            globalGoldOunceUSD = parseFloat(document.getElementById('customOuncePrice').value) || globalGoldOunceUSD;
-            updatePricesCalculation();
-            closePriceModal();
-        }
-
-        // Modals Logic
-        function openAuthModal(mode) {
-            authMode = mode;
-            const title = document.getElementById('authModalTitle');
-            const sub = document.getElementById('authModalSub');
-            const btn = document.getElementById('authSubmitBtn');
-            const nameField = document.getElementById('nameField');
-            const toggleBtn = document.getElementById('toggleAuthBtn');
-
-            if (mode === 'register') {
-                title.innerText = 'ایجاد حساب کاربری';
-                sub.innerText = 'به سامانه معاملات هوشمند گلدین بپیوندید';
-                btn.innerText = 'ثبت نام در گلدین';
-                nameField.classList.remove('hidden');
-                toggleBtn.innerText = 'قبلاً ثبت‌نام کرده‌اید؟ ورود';
-            } else {
-                title.innerText = 'ورود به حساب کاربری';
-                sub.innerText = 'برای دسترسی به کیف پول و معاملات وارد شوید';
-                btn.innerText = 'ورود به حساب';
-                nameField.classList.add('hidden');
-                toggleBtn.innerText = 'حساب کاربری ندارید؟ ثبت نام کنید';
-            }
-            document.getElementById('authModal').classList.remove('hidden');
-        }
-
-        function closeAuthModal() { document.getElementById('authModal').classList.add('hidden'); }
-        function toggleAuthMode() { openAuthModal(authMode === 'login' ? 'register' : 'login'); }
-        function handleAuth() { alert(authMode === 'login' ? 'ورود موفقیت‌آمیز بود.' : 'ثبت نام انجام شد.'); closeAuthModal(); }
-
-        function openPriceModal() { document.getElementById('priceModal').classList.remove('hidden'); }
-        function closePriceModal() { document.getElementById('priceModal').classList.add('hidden'); }
-
-        // --- GAME LOGIC ---
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-
-        let score = 0;
-        let timeLeft = 60;
-        let gameTimer = null;
-        let isGaming = false;
-
-        let hook = {
-            x: 300,
-            y: 50,
-            angle: 0,
-            angleSpeed: 0.03,
-            length: 40,
-            maxLength: 350,
-            state: 'swing',
-            speed: 5,
-            caughtItem: null
-        };
-
-        let items = [];
-
-        function initItems() {
-            items = [
-                { x: 100, y: 200, radius: 15, type: 'gold', points: 100, color: '#FFD700', weight: 4 },
-                { x: 250, y: 320, radius: 25, type: 'gold', points: 250, color: '#D4AF37', weight: 2 },
-                { x: 450, y: 180, radius: 12, type: 'gold', points: 80, color: '#FFD700', weight: 5 },
-                { x: 500, y: 300, radius: 30, type: 'gold', points: 400, color: '#AA820A', weight: 1.5 },
-                { x: 180, y: 280, radius: 22, type: 'stone', points: 20, color: '#64748b', weight: 1 },
-                { x: 380, y: 240, radius: 28, type: 'stone', points: 30, color: '#475569', weight: 0.8 }
-            ];
-        }
-
-        function startGame() {
-            score = 0;
-            timeLeft = 60;
-            isGaming = true;
-            document.getElementById('gameScore').innerText = score;
-            document.getElementById('gameTime').innerText = timeLeft;
-            document.getElementById('gameOverlay').classList.add('hidden');
-            document.getElementById('hookBtn').disabled = false;
-
-            initItems();
-
-            clearInterval(gameTimer);
-            gameTimer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('gameTime').innerText = timeLeft;
-                if (timeLeft <= 0) endGame();
-            }, 1000);
-
-            requestAnimationFrame(gameLoop);
-        }
-
-        function dropHook() {
-            if (hook.state === 'swing') {
-                hook.state = 'extend';
-            }
-        }
-
-        function endGame() {
-            isGaming = false;
-            clearInterval(gameTimer);
-            document.getElementById('gameOverlay').classList.remove('hidden');
-            document.getElementById('hookBtn').disabled = true;
-            alert(`بازی به پایان رسید!\nامتیاز نهایی: ${score}\nمبلغ پاداش به کیف پول شما اضافه شد.`);
-        }
-
-        function gameLoop() {
-            if (!isGaming) return;
-
-            if (hook.state === 'swing') {
-                hook.angle += hook.angleSpeed;
-                if (hook.angle > 1.2 || hook.angle < -1.2) {
-                    hook.angleSpeed = -hook.angleSpeed;
-                }
-            } else if (hook.state === 'extend') {
-                hook.length += hook.speed;
-                const hookX = 300 + Math.sin(hook.angle) * hook.length;
-                const hookY = 50 + Math.cos(hook.angle) * hook.length;
-
-                items.forEach((item, idx) => {
-                    const dist = Math.hypot(hookX - item.x, hookY - item.y);
-                    if (dist < item.radius + 10) {
-                        hook.state = 'retract';
-                        hook.caughtItem = item;
-                        items.splice(idx, 1);
-                    }
-                });
-
-                if (hook.length >= hook.maxLength || hookY >= 380) {
-                    hook.state = 'retract';
-                }
-            } else if (hook.state === 'retract') {
-                const retractSpeed = hook.caughtItem ? hook.speed * hook.caughtItem.weight : hook.speed * 2;
-                hook.length -= retractSpeed;
-
-                if (hook.length <= 40) {
-                    hook.length = 40;
-                    hook.state = 'swing';
-                    if (hook.caughtItem) {
-                        score += hook.caughtItem.points;
-                        document.getElementById('gameScore').innerText = score;
-                        hook.caughtItem = null;
-                    }
-                }
-            }
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#0f172a';
-            ctx.fillRect(270, 0, 60, 20);
-
-            items.forEach(item => {
-                ctx.beginPath();
-                ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
-                ctx.fillStyle = item.color;
-                ctx.fill();
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            });
-
-            const endX = 300 + Math.sin(hook.angle) * hook.length;
-            const endY = 50 + Math.cos(hook.angle) * hook.length;
-
-            ctx.beginPath();
-            ctx.moveTo(300, 20);
-            ctx.lineTo(endX, endY);
-            ctx.strokeStyle = '#D4AF37';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-
-            if (hook.caughtItem) {
-                hook.caughtItem.x = endX;
-                hook.caughtItem.y = endY + hook.caughtItem.radius;
-                ctx.beginPath();
-                ctx.arc(hook.caughtItem.x, hook.caughtItem.y, hook.caughtItem.radius, 0, Math.PI * 2);
-                ctx.fillStyle = hook.caughtItem.color;
-                ctx.fill();
-            }
-
-            ctx.save();
-            ctx.translate(endX, endY);
-            ctx.rotate(-hook.angle);
-            ctx.beginPath();
-            ctx.arc(0, 0, 8, 0, Math.PI);
-            ctx.strokeStyle = '#FFD700';
-            ctx.lineWidth = 4;
-            ctx.stroke();
-            ctx.restore();
-
-            requestAnimationFrame(gameLoop);
-        }
-
-        // فراخوانی داده‌های زنده در زمان بارگذاری صفحه
-        fetchLiveMarketData();
-    </script>
-</body>
-</html>
+                    <input type="tel" required placeholder="09123456789" class="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-
