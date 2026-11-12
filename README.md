@@ -1,62 +1,57 @@
-# گلدین (Goldin)
+# GOLDIN — Persian Gold Platform Starter
 
-نمونهٔ آزمایشی سایت خرید و فروش طلای آبشده با تتر: صفحهٔ معرفی، ثبت‌نام و ورود، کیف پول، خرید و فروش طلا، و قیمت زنده از طریق یک Worker.
+A responsive Persian RTL starter for a gold trading platform inspired by the broad UX patterns of modern gold/crypto services.
+It is an independent implementation; it does not copy Tetalla's source code, text, branding, or assets.
 
-> **این پروژه نسخهٔ آزمایشی است.** حساب‌ها و موجودی‌ها فقط در `localStorage` مرورگر ذخیره می‌شوند و هیچ پولی جابه‌جا نمی‌شود. برای معاملهٔ واقعی به سرور، دیتابیس، شارژ و برداشت امن، احراز هویت و مجوزهای قانونی نیاز است.
+## Product decisions (confirmed)
+- Asset: 18-karat gold (750), traded by gram.
+- Supply/custody: official treasury and supplier model.
+- Customer options: account-based gold holding and physical delivery request.
+- Revenue: buy/sell spread; any separate delivery or service charges must be disclosed independently.
+See `ARCHITECTURE_18K_IR_FA.md` for the operating design.
 
-## ساختار
+## Included
+- React + Vite frontend (Persian RTL, responsive, dark/gold visual system)
+- Interactive gold/USDT calculator (demo values clearly marked)
+- Express API starter
+- Prisma schema for users, wallets, ledger entries, orders and audit logs
+- Environment templates and implementation checklist
 
+## Run locally
+
+### Frontend
+```bash
+cd client
+npm install
+npm run dev
 ```
-goldin/
-├── site/                  سایت ایستا (برای GitHub Pages)
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   └── config.js          آدرس سرویس قیمت (PRICE_API)
-├── worker/                سرویس قیمت (Cloudflare Worker)
-│   ├── worker.js
-│   ├── wrangler.toml
-│   └── test.mjs
-└── .github/workflows/pages.yml   انتشار خودکار سایت
+
+### Backend
+```bash
+cd server
+npm install
+cp .env.example .env
+# configure PostgreSQL DATABASE_URL and JWT_SECRET
+npx prisma generate
+npx prisma migrate dev --name init
+npm run dev
 ```
 
-## اجرای محلی
+Frontend runs on http://localhost:5173 and API on http://localhost:4000.
 
-```
-cd site
-python3 -m http.server 8000
-```
+## Important production boundary
+This starter is NOT ready to hold funds or execute real trades. Demo prices and calculator values are illustrative.
+Before production, implement and independently audit:
+- KYC/AML and sanctions screening appropriate to the operating jurisdiction
+- custody and wallet-provider integration; never store private keys in this app
+- signed webhook verification and idempotent payment processing
+- a double-entry ledger, reconciliation, withdrawal approvals and fraud controls
+- market data sourcing, stale-price protection, spread/fee disclosure and trade execution
+- rate limiting, MFA, secure session/cookie policy, secrets management, backups and monitoring
+- legal review, licensing, consumer disclosures and tax treatment
 
-بعد `http://localhost:8000` را باز کن. بدون `PRICE_API` قیمت‌ها را دستی وارد می‌کنی.
+Do not connect real payment rails or enable real-money transactions until these controls and approvals are complete.
 
-## انتشار سایت روی GitHub Pages
 
-1. پروژه را در یک مخزن GitHub بگذار (شاخهٔ `main`).
-2. در مخزن: Settings > Pages > Source را روی **GitHub Actions** بگذار.
-3. با هر push روی `main`، پوشهٔ `site/` منتشر می‌شود.
-
-## راه‌اندازی قیمت زنده
-
-مرورگر اجازهٔ درخواست مستقیم به سرویس‌های قیمت را نمی‌دهد (CORS)، پس یک Worker واسطه لازم است.
-
-1. در `worker/wrangler.toml` مقدار `ALLOW_ORIGIN` را به origin سایتت تغییر بده (مثلاً `https://USERNAME.github.io`).
-2. از پوشهٔ `worker/` اجرا کن:
-   ```
-   npx wrangler deploy
-   ```
-3. آدرس Worker را در `site/config.js` در `PRICE_API` بنویس و دوباره push کن.
-
-تست منطق Worker با داده‌ٔ ساختگی: `node worker/test.mjs`
-
-### قیمت از کجا می‌آید
-
-- **تتر:** API عمومی نوبیتکس (ریال، تقسیم بر ۱۰).
-- **طلا:** `persiantoolbox.ir/api/market`. قیمت ریالی آن استفاده نمی‌شود؛ نسبت `gold.pricePerGram` به `currencies.IRR.rate` قیمت جهانی طلای ۲۴ عیار به دلار را می‌دهد (عیار در خروجی نیامده و ۲۴ فرض شده).
-- **طلای ۱۸ عیار:** قیمت دلاری × ۱۸/۲۴ × قیمت تتر به تومان.
-
-این قیمت جهانی با نرخ تتر است و حق‌بیمه یا تخفیف بازار داخل را ندارد. پیش از هر استفادهٔ واقعی با یک تابلوی معتبر مقایسه کن. شرایط استفاده و محدودیت درخواست سرویس‌های ثالث را هم خودت بررسی کن. اگر قیمت زنده بیش از ۲ دقیقه قدیمی شود، معامله در صفحه متوقف می‌شود.
-
-## تنظیمات
-
-- `FEE` در `site/app.js`: کارمزد خرید و فروش (پیش‌فرض ۰٫۵٪).
-- `ALLOW_ORIGIN` و `MARKET_API_URL` در Worker.
+## انتشار روی GitHub Pages
+برای دستورالعمل انتشار نسخه نمایشی فرانت‌اند، فایل `GITHUB_PAGES_FA.md` را ببینید. GitHub Pages فقط پوشه `client` را build و منتشر می‌کند؛ backend باید جداگانه میزبانی شود.
