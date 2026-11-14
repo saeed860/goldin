@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>گلدین | خرید و فروش طلا با تتر</title>
+<meta name="description" content="گلدین: نمونهٔ آزمایشی خرید و فروش طلای آبشده با تتر یا تومان، از یک سوت. ثبت‌نام، کیف پول و ماشین‌حساب قیمت.">
+<meta name="theme-color" content="#0B0E14">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.workers.dev; manifest-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="گلدین | خرید و فروش طلا با تتر">
+<meta property="og:description" content="نمونهٔ آزمایشی خرید و فروش طلای آبشده با تتر یا تومان، از یک سوت.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="style.css?v=__BUILD__">
+</head>
+<body>
+<noscript><div class="demo">برای استفاده از این سایت باید جاوااسکریپت فعال باشد.</div></noscript>
+<div class="demo">نسخهٔ آزمایشی: موجودی‌ها فرضی‌اند و فقط در همین مرورگر ذخیره می‌شوند. پولی جابه‌جا نمی‌شود.</div>
+<div class="wrap">
+<header>
+  <a class="logo" href="#home">گلدین</a>
+  <nav class="links" aria-label="بخش‌ها"><a href="#how">چطور کار می‌کند</a><a href="#why">چرا گلدین</a><a href="#calc">ماشین‌حساب</a><a href="#faq">سؤالات متداول</a></nav>
+  <div class="row" id="nav"></div>
+</header>
+
+<!-- خانه -->
+<main>
+<div class="view" id="v-home">
+  <div class="hero2">
+    <div>
+      <span class="pill">قیمت لحظه‌ای · تسویه با تتر یا تومان</span>
+      <h1>تتر، طلا می‌شود</h1>
+      <p>طلای آبشده را بدون اجرت ساخت بخر و بفروش. با واحد سوت، از مبلغ‌های خیلی کم هم شروع می‌کنی.</p>
+      <div class="row"><a class="btn big" href="#signup">ساخت حساب</a><a class="btn ghost big" href="#calc">ماشین‌حساب</a></div>
+      <div class="chips"><span>بدون اجرت ساخت</span><span>خرید از یک سوت</span><span>تبدیل دوطرفه</span><span>گزارش شفاف</span></div>
+    </div>
+    <div class="card pcard" aria-label="قیمت‌های زنده">
+      <div class="prow"><div><span>طلای ۱۸ عیار / هر گرم</span><b id="st-g">—</b><small>تومان</small></div><i id="ch-g"></i></div>
+      <div class="prow"><div><span>قیمت تتر (USDT)</span><b id="st-u">—</b><small>تومان</small></div><i id="ch-u"></i></div>
+      <div class="prow"><div><span>طلای جهانی / هر اونس</span><b id="st-o">—</b><small>تتر</small></div><i id="ch-o"></i></div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <span class="eyebrow">LIVE CHART</span><h2>نمودار قیمت زنده</h2>
+    <div class="card chart">
+      <div class="chead">
+        <div class="tabs mini" id="ctabs"><button type="button" data-c="g" class="on">طلا ۱۸</button><button type="button" data-c="u">تتر</button><button type="button" data-c="o">اونس جهانی</button></div>
+        <div class="tabs mini" id="rtabs"><button type="button" data-r="24" class="on">۲۴ ساعت</button><button type="button" data-r="168">۷ روز</button></div>
+      </div>
+      <div id="chart" class="cbox"></div>
+      <div class="mm"><span>کمترین <b id="mn">—</b></span><span>بیشترین <b id="mx">—</b></span><span>تغییر <b id="cg2">—</b></span></div>
+      <p class="note" id="cnote"></p>
+    </div>
+  </section>
+
+  <section class="sec" id="calc">
+    <span class="eyebrow">CALCULATOR</span><h2>ماشین‌حساب طلا</h2>
+    <div class="card max">
+      <div class="grid">
+        <div><label for="price">قیمت هر گرم طلای ۱۸ عیار (تومان)</label><input class="n" id="price" inputmode="decimal"></div>
+        <div><label for="usdt">قیمت هر تتر (تومان)</label><input class="n" id="usdt" inputmode="decimal"></div>
+        <div class="full"><label for="ct">مبلغ (تومان)</label><input class="n" id="ct" inputmode="decimal"></div>
+        <div><label for="cu">تتر (USDT)</label><input class="n" id="cu" inputmode="decimal"></div>
+        <div><label for="cg">گرم</label><input class="n" id="cg" inputmode="decimal"></div>
+        <div><label for="cs">سوت</label><input class="n" id="cs" inputmode="decimal"></div>
+        <div><label for="cm">مثقال</label><input class="n" id="cm" inputmode="decimal"></div>
+      </div>
+      <p class="note">منبع قیمت: <b id="src">قیمت دستی</b>. در حالت دستی قیمت‌ها را خودت وارد می‌کنی. کارمزد خرید و فروش <b id="feeTxt"></b> است و پیش از تأیید هر سفارش نشان داده می‌شود.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <span class="eyebrow">HOW IT WORKS</span><h2>از تتر تا طلا در سه قدم</h2>
+    <div class="grid3">
+      <div class="card"><div class="ic">۱</div><h3>حساب بساز</h3><p>با ایمیل ثبت‌نام کن و وارد پنل شو.</p></div>
+      <div class="card"><div class="ic">۲</div><h3>حساب را شارژ کن</h3><p>با تومان یا تتر. در این نسخه موجودی آزمایشی است.</p></div>
+      <div class="card"><div class="ic">۳</div><h3>طلا بخر یا بفروش</h3><p>وزن یا مبلغ را بزن؛ کارمزد پیش از تأیید دیده می‌شود.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="why">
+    <span class="eyebrow">WHY GOLDIN</span><h2>چرا گلدین</h2>
+    <div class="grid3">
+      <div class="card"><div class="ic">◈</div><h3>بدون اجرت ساخت</h3><p>طلای آبشده زینتی نیست و هزینهٔ ساخت ندارد.</p></div>
+      <div class="card"><div class="ic">◎</div><h3>خرید از مبلغ کم</h3><p>با سوت (هزارم گرم) هر مبلغی را می‌شود طلا کرد.</p></div>
+      <div class="card"><div class="ic">⇄</div><h3>تبدیل دوطرفه</h3><p>خرید و فروش، هر دو با تومان یا تتر.</p></div>
+      <div class="card"><div class="ic">◐</div><h3>قیمت لحظه‌ای</h3><p>قیمت جهانی طلا با نرخ زندهٔ تتر، با نمودار ۲۴ ساعته و ۷ روزه.</p></div>
+      <div class="card"><div class="ic">▤</div><h3>گزارش شفاف</h3><p>هر معامله با وزن و قیمت در پنل ثبت می‌شود.</p></div>
+      <div class="card"><div class="ic">✦</div><h3>ساده و سریع</h3><p>ثبت‌نام با ایمیل و معامله در چند ثانیه.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <span class="eyebrow">FAQ</span><h2>سؤالات متداول</h2>
+    <details><summary>سوت و مثقال چیست؟</summary><p>سوت یک‌هزارم گرم و مثقال ۴٫۳۳۱۸ گرم است. هر اونس هم ۳۱٫۱۰۳۵ گرم است.</p></details>
+    <details><summary>طلای آبشده چیست؟</summary><p>طلای خام یا شمش که اجرت ساخت ندارد.</p></details>
+    <details><summary>قیمت چطور محاسبه می‌شود؟</summary><p>قیمت جهانی طلا به دلار گرفته می‌شود، با قیمت لحظه‌ای تتر به تومان تبدیل و به عیار ۱۸ می‌رسد. طلای جهانی به تتر همان قیمت دلاری است (۱ تتر = ۱ دلار). حق‌بیمه یا تخفیف بازار داخل در آن نیست.</p></details>
+    <details><summary>این نسخه واقعی است؟</summary><p>خیر. این نسخهٔ آزمایشی رابط کاربری است و برای معاملهٔ واقعی باید به سرور، درگاه پرداخت و مجوزهای لازم وصل شود.</p></details>
+  </section>
+
+  <section class="sec"><div class="band"><h2>اولین گرم طلایت را امتحان کن</h2><p>ثبت‌نام رایگان است؛ موجودی آزمایشی می‌گیری و خرید و فروش را تجربه می‌کنی.</p><a class="btn big" href="#signup">ساخت حساب</a></div></section>
+</div>
+
+<!-- ورود / ثبت‌نام -->
+<div class="view" id="v-auth">
+  <div class="card narrow">
+    <div class="tabs" id="authTabs"><button type="button" data-m="login">ورود</button><button type="button" data-m="signup">ثبت‌نام</button></div>
+    <label for="em">ایمیل</label><input class="n" id="em" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="pw">رمز عبور</label><input class="n" id="pw" type="password" autocomplete="current-password" placeholder="حداقل ۸ کاراکتر">
+    <div id="pw2w" hidden><label for="pw2">تکرار رمز عبور</label><input class="n" id="pw2" type="password" autocomplete="new-password"></div>
+    <p class="err" id="authErr" role="alert"></p>
+    <button class="btn full" id="authGo" type="button"></button>
+  </div>
+</div>
+
+<!-- پنل -->
+<div class="view" id="v-panel">
+  <p class="sub acct">حساب: <b id="who"></b></p>
+  <div class="bal">
+    <div class="card"><span>تومان</span><b id="bT">0</b></div>
+    <div class="card"><span>تتر (USDT)</span><b id="bU">0</b></div>
+    <div class="card g"><span>طلا (گرم)</span><b id="bG">0</b><span id="bGv"></span></div>
+  </div>
+  <div class="panel">
+    <div class="card">
+      <div class="tabs" id="side"><button type="button" data-s="buy">خرید طلا</button><button type="button" data-s="sell">فروش طلا</button></div>
+      <label for="cur" id="curL"></label>
+      <select id="cur"><option value="t">تومان</option><option value="u">تتر (USDT)</option></select>
+      <div class="grid">
+        <div><label for="tg">وزن (گرم)</label><input class="n" id="tg" inputmode="decimal" placeholder="0.000"></div>
+        <div><label for="tt">مبلغ (تومان)</label><input class="n" id="tt" inputmode="decimal" placeholder="0"></div>
+      </div>
+      <div class="sum" id="sum"></div>
+      <p class="err" id="trErr" role="alert"></p>
+      <button class="btn full" id="trGo" type="button"></button>
+    </div>
+    <div class="card">
+      <h2>موجودی آزمایشی</h2>
+      <p>برای امتحان برنامه، موجودی فرضی اضافه کنید.</p>
+      <div class="row mt10 wrap">
+        <button class="btn ghost sm" type="button" data-dep="t">+ ۱۰ میلیون تومان</button>
+        <button class="btn ghost sm" type="button" data-dep="u">+ ۱۰۰ تتر</button>
+      </div>
+      <h2 class="mt18">معاملات اخیر</h2>
+      <ul class="hist" id="hist"></ul>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="flinks"><a href="#how">چطور کار می‌کند</a><a href="#why">چرا گلدین</a><a href="#calc">ماشین‌حساب</a><a href="#faq">سؤالات متداول</a></div>
+  <p>© گلدین. این سایت نسخهٔ آزمایشی است؛ موجودی‌ها فرضی‌اند و پولی جابه‌جا نمی‌شود. قیمت‌ها توصیهٔ مالی نیستند.</p>
+</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script defer src="config.js?v=__BUILD__"></script>
+<script defer src="app.js?v=__BUILD__"></script>
+</body>
+</html>
