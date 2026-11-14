@@ -1,7 +1,0 @@
-name = "goldin-price"
-main = "worker.js"
-compatibility_date = "2026-11-01"
-
-[vars]
-# فقط origin سایت، بدون مسیر. مثال: https://YOUR-USERNAME.github.io
-ALLOW_ORIGIN = "https://YOUR-USERNAME.github.io"
